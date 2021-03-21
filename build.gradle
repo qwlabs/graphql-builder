@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    maven { url 'https://maven.aliyun.com/repository/public' }
+}
+
+dependencies {
+
+    implementation 'org.jetbrains:annotations:20.1.0'
+}
+
+group 'qw.common'
+version '0.1'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+    maxParallelForks = Runtime.runtime.availableProcessors()
+}
+
+apply from: "gradle/check.gradle"
+
+
+dependencies {
+    implementation("javax.validation:validation-api:${validationApiVersion}")
+    implementation("com.google.guava:guava:${guavaVersion}")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testImplementation("org.hamcrest:hamcrest-all:${hamcrestVersion}")
+}
