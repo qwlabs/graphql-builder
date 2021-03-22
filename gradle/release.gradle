@@ -48,6 +48,29 @@ publishing {
             groupId project.group
             artifactId project.name
             version project.version
+            pom {
+                name = project.name
+                description = 'GraphQL query builder for Java'
+                url = 'https://github.com/qwlabs/graphql-builder'
+                licenses {
+                    license {
+                        name = 'GNU GENERAL PUBLIC LICENSE, Version 3'
+                        url = 'https://www.gnu.org/licenses/gpl-3.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'pipinet'
+                        name = 'pipinet'
+                        email = 'pipinet@vip.qq.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/qwlabs/graphql-builder.git'
+                    developerConnection = 'scm:git:ssh://github.com/qwlabs/graphql-builder.git'
+                    url = 'https://github.com/qwlabs/graphql-builder'
+                }
+            }
         }
     }
 }
