@@ -3,6 +3,20 @@
 GraphQL query builder for Java
 
 # Installation
+## Maven
+```xml
+<dependency>
+  <groupId>com.qwlabs</groupId>
+  <artifactId>graphql-builder</artifactId>
+  <version>0.1</version>
+  <type>pom</type>
+</dependency>
+```
+## Gradle
+```gradle
+implementation 'com.qwlabs:graphql-builder:0.1'
+```
+
 
 # Usage
 
