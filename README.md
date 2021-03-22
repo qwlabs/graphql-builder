@@ -6,7 +6,7 @@ GraphQL query builder for Java
 ## Maven
 ```xml
 <dependency>
-  <groupId>qw.common</groupId>
+  <groupId>com.qwlabs</groupId>
   <artifactId>graphql-builder</artifactId>
   <version>0.1</version>
   <type>pom</type>
