@@ -1,4 +1,4 @@
-package qw.common.graphql.builder;
+package com.qwlabs.graphql.builder;
 
 import com.google.common.collect.Sets;
 import org.jetbrains.annotations.NotNull;

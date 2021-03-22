@@ -1,4 +1,4 @@
-package qw.common.graphql.builder;
+package com.qwlabs.graphql.builder;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Maps;

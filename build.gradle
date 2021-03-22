@@ -10,12 +10,7 @@ repositories {
     maven { url 'https://maven.aliyun.com/repository/public' }
 }
 
-dependencies {
-
-    implementation 'org.jetbrains:annotations:20.1.0'
-}
-
-group 'qw.common'
+group 'com.qwlabs'
 version '0.1'
 ext.rversion='0.1'
 

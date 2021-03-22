@@ -1,4 +1,4 @@
-package qw.common.graphql.builder;
+package com.qwlabs.graphql.builder;
 
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
