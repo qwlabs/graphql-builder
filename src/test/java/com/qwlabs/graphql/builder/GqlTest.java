@@ -1,4 +1,4 @@
-package qw.common.graphql.builder;
+package com.qwlabs.graphql.builder;
 
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +39,7 @@ public class GqlTest {
                         GqlVariable.of("content", "111")
                 )))
                 .fields(GqlFields.of("id", "content", "createdAt"));
+        System.out.println(gql.buildPrettify());
         assertThat(gql.build(), is("{\"query\":\"mutation {mutation1{input:{content:\\\"111\\\"}}{id content createdAt}}\", \"variables\": null}"));
         assertThat(gql.buildPrettify(), is("{\n" +
                 " \"query\":\"mutation {\n" +

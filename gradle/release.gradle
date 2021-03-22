@@ -1,0 +1,78 @@
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+
+
+jar {
+    manifest.attributes["Created-By"] =
+            "${System.getProperty("java.version")} (${System.getProperty("java.specification.vendor")})"
+    manifest.attributes["Implementation-Title"] = project.name
+    manifest.attributes["Implementation-Version"] = project.version
+}
+
+javadoc {
+    description = "Generates project-level javadoc for use in -javadoc jar"
+    options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PROTECTED
+    options.author = true
+    options.header = project.name
+    options.addStringOption('Xdoclint:none', '-quiet')
+    logging.captureStandardError LogLevel.INFO
+    logging.captureStandardOutput LogLevel.INFO // suppress "## warnings" message
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+artifacts {
+    archives sourcesJar, javadocJar
+}
+
+configurations {
+    artifacts {
+        archives sourcesJar, javadocJar
+    }
+}
+
+publishing {
+    publications {
+        BintrayPublication(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId project.group
+            artifactId project.name
+            version project.version
+        }
+    }
+}
+
+bintray {
+    user = System.getenv("BINTRAY_USER") ?: ""
+    key = System.getenv("BINTRAY_API_KEY") ?: ""
+    publications = ['BintrayPublication']
+    publish = project.publish
+    pkg {
+        repo = "graphql-builder"
+        userOrg = "qwlabs"
+        name = project.name
+        desc = project.name
+        websiteUrl = "https://github.com/qwlabs/graphql-builder"
+        issueTrackerUrl = "https://github.com/qwlabs/graphql-builder/issues"
+        vcsUrl = "https://github.com/qwlabs/graphql-builder.git"
+        licenses = ['GPL-3.0']
+        version {
+            name = project.version
+            desc = project.name + project.version
+            released = new Date()
+            vcsTag = project.rversion
+        }
+    }
+}
+
+
