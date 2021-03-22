@@ -15,7 +15,7 @@ dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
 }
 
-group 'com.qwlabs'
+group 'qw.common'
 version '0.1'
 ext.rversion='0.1'
 

@@ -1,4 +1,4 @@
-package com.qwlabs.graphql.builder;
+package qw.common.graphql.builder;
 
 import org.junit.jupiter.api.Test;
 
