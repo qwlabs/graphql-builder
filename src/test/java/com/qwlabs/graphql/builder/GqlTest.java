@@ -7,7 +7,7 @@ import static org.hamcrest.core.Is.is;
 
 public class GqlTest {
     @Test
-    public void should_build_query(){
+    public void should_build_query() {
         Gql gql = Gql.query("query1")
                 .fields(GqlField.of("nodes").fields("id", "content", "createdAt"),
                         GqlField.of("totalCount"),
