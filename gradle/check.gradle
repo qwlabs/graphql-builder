@@ -22,7 +22,7 @@ task prepush(dependsOn: [clean, "checkstyle", test, jacocoTestCoverageVerificati
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
-//    maxParallelForks = Runtime.runtime.availableProcessors()
+    maxParallelForks = Runtime.runtime.availableProcessors()
 }
 
 

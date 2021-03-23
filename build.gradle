@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'com.jfrog.bintray' apply false
 }
 
 repositories {
@@ -28,13 +27,8 @@ compileTestJava {
     options.encoding = 'UTF-8'
 }
 
-test {
-    useJUnitPlatform()
-    maxParallelForks = Runtime.runtime.availableProcessors()
-}
-
 apply from: "gradle/check.gradle"
-apply from: "gradle/release.gradle"
+apply from: "gradle/publication.gradle"
 
 dependencies {
     implementation("javax.validation:validation-api:${validationApiVersion}")

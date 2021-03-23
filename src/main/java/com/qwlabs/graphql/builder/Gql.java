@@ -57,19 +57,19 @@ public class Gql {
         return String.format(PRETTIFY_TEMPLATE, operation, buildPrettifySegment(1));
     }
 
-    public String buildSegment(){
+    public String buildSegment() {
         StringBuilder builder = new StringBuilder("{").append(name);
-        Optional.ofNullable(variables).ifPresent(vs->builder.append(vs.build()));
-        Optional.ofNullable(fields).ifPresent(fs->builder.append(fs.build()));
+        Optional.ofNullable(variables).ifPresent(vs -> builder.append(vs.build()));
+        Optional.ofNullable(fields).ifPresent(fs -> builder.append(fs.build()));
         builder.append("}");
         return builder.toString();
     }
 
-    public String buildPrettifySegment(int level){
+    public String buildPrettifySegment(int level) {
         StringBuilder builder = new StringBuilder("{\n")
                 .append(prettifyLevel(level)).append(name);
-        Optional.ofNullable(variables).ifPresent(vs->builder.append(vs.buildPrettify(level)));
-        Optional.ofNullable(fields).ifPresent(fs->builder.append(fs.buildPrettify(level)));
+        Optional.ofNullable(variables).ifPresent(vs -> builder.append(vs.buildPrettify(level)));
+        Optional.ofNullable(fields).ifPresent(fs -> builder.append(fs.buildPrettify(level)));
         builder.append("\n}");
         return builder.toString();
     }

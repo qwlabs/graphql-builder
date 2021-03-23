@@ -1,8 +1,8 @@
 package com.qwlabs.graphql.builder;
 
 import com.google.common.collect.Sets;
-import org.jetbrains.annotations.NotNull;
 
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 public class GqlVariable {

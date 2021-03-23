@@ -32,7 +32,7 @@ public class GqlVariables {
 
     public String buildPrettify(int level) {
         StringJoiner joiner = new StringJoiner(", ", "{", "}");
-        variables.stream().map(v->v.buildPrettify(level)).forEach(joiner::add);
+        variables.stream().map(v -> v.buildPrettify(level)).forEach(joiner::add);
         return joiner.toString();
     }
 }

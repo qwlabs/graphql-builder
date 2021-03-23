@@ -4,9 +4,6 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
-    plugins {
-        id "com.jfrog.bintray" version "${bintrayPluginVersion}"
-    }
 }
 
 rootProject.name = 'graphql-builder'

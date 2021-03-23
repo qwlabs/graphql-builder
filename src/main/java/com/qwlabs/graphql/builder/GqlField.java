@@ -41,15 +41,15 @@ public class GqlField {
 
     public String build() {
         StringBuilder builder = new StringBuilder(name);
-        Optional.ofNullable(variables).ifPresent(vs->builder.append(vs.build()));
-        Optional.ofNullable(fields).ifPresent(fs->builder.append(fs.build()));
+        Optional.ofNullable(variables).ifPresent(vs -> builder.append(vs.build()));
+        Optional.ofNullable(fields).ifPresent(fs -> builder.append(fs.build()));
         return builder.toString();
     }
 
     public String buildPrettify(int level) {
         StringBuilder builder = new StringBuilder(Gql.prettifyLevel(level)).append(name);
-        Optional.ofNullable(variables).ifPresent(vs->builder.append(vs.buildPrettify(level)));
-        Optional.ofNullable(fields).ifPresent(fs->builder.append(fs.buildPrettify(level)));
+        Optional.ofNullable(variables).ifPresent(vs -> builder.append(vs.buildPrettify(level)));
+        Optional.ofNullable(fields).ifPresent(fs -> builder.append(fs.buildPrettify(level)));
         return builder.toString();
     }
 }
