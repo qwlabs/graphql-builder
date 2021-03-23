@@ -1,4 +1,5 @@
 # graphql-builder
+[![CI](https://github.com/qwlabs/graphql-builder/actions/workflows/continuous-integration-workflow.yml/badge.svg?branch=master)](https://github.com/qwlabs/graphql-builder/actions/workflows/continuous-integration-workflow.yml)
 [ ![Download](https://api.bintray.com/packages/qwlabs/graphql-builder/graphql-builder/images/download.svg) ](https://bintray.com/qwlabs/graphql-builder/graphql-builder/_latestVersion)
 GraphQL query builder for Java
 
