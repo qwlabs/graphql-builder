@@ -75,14 +75,15 @@ jobs:
           java-version: '11'
       - name: Deploy artifacts
         run: |
-          export GPG_PRIVATE_KEY=${{ secrets.GPG_PRIVATE_KEY }}
-          export GPG_PASSPHRASE=${{ secrets.GPG_PASSPHRASE }}
           export VERSION_HEADER=$'Version: GnuPG v2\n\n'
           export ORG_GRADLE_PROJECT_signingKey=${GPG_PRIVATE_KEY#"$VERSION_HEADER"}
           export ORG_GRADLE_PROJECT_signingPassword="$GPG_PASSPHRASE"
-          export OSSRH_TOKEN_USERNAME=${{ secrets.OSSRH_TOKEN_USERNAME }}
-          export OSSRH_TOKEN_PASSWORD=${{ secrets.OSSRH_TOKEN_PASSWORD }}
           ./gradlew publish --stacktrace --no-parallel
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          OSSRH_TOKEN_USERNAME: ${{ secrets.OSSRH_TOKEN_USERNAME }}
+          OSSRH_TOKEN_PASSWORD: ${{ secrets.OSSRH_TOKEN_PASSWORD }}
       - name: Track error step
         uses: spring-projects/track-build-errors-action@v1
         if: ${{ failure() }}
