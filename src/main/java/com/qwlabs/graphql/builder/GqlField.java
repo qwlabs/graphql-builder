@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class GqlField {
+public final class GqlField {
     private final String name;
     private GqlVariables variables;
     private GqlFields fields;
@@ -19,7 +19,7 @@ public class GqlField {
         return new GqlField(name);
     }
 
-    public GqlField variables(@NotNull GqlVariable @NotNull ... variables) {
+    public GqlField variables(@NotNull GqlVariable... variables) {
         this.variables = Optional.ofNullable(this.variables).orElseGet(GqlVariables::new);
         this.variables.add(variables);
         return this;
@@ -29,7 +29,7 @@ public class GqlField {
         return fields(Arrays.stream(names).map(GqlField::of).collect(Collectors.toList()));
     }
 
-    public GqlField fields(@NotNull GqlField @NotNull ... fields) {
+    public GqlField fields(@NotNull GqlField... fields) {
         return fields(Arrays.asList(fields));
     }
 

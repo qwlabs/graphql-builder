@@ -10,24 +10,24 @@ import java.util.Optional;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
-public class GqlFields {
+public final class GqlFields {
     private List<GqlField> fields;
 
-    public static GqlFields of(@NotNull GqlField @NotNull ... fields) {
+    public static GqlFields of(@NotNull GqlField... fields) {
         return new GqlFields().add(fields);
     }
 
-    public static GqlFields of(@NotNull String @NotNull ... names) {
+    public static GqlFields of(@NotNull String... names) {
         return new GqlFields().add(names);
     }
 
-    public GqlFields add(@NotNull GqlField @NotNull ... fields) {
+    public GqlFields add(@NotNull GqlField... fields) {
         return add(Arrays.stream(fields)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList()));
     }
 
-    public GqlFields add(@NotNull String @NotNull ... names) {
+    public GqlFields add(@NotNull String... names) {
         return add(Arrays.stream(names)
                 .filter(Objects::nonNull)
                 .map(GqlField::of)

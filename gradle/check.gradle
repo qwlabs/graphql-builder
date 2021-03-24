@@ -38,17 +38,14 @@ jacocoTestReport {
 jacocoTestCoverageVerification {
     violationRules {
         rule {
-            limit {
-                counter = 'BRANCH'
-                value = 'COVEREDRATIO'
-                minimum = new BigDecimal(coverageBranchMin)
-            }
-        }
-        rule {
+            enabled = true
             limit {
                 counter = 'LINE'
-                value = 'TOTALCOUNT'
                 minimum = new BigDecimal(coverageLineMin)
+            }
+            limit {
+                counter = 'BRANCH'
+                minimum = new BigDecimal(coverageBranchMin)
             }
         }
     }

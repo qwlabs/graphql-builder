@@ -9,14 +9,14 @@ import java.util.Optional;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
-public class GqlVariables {
+public final class GqlVariables {
     private List<GqlVariable> variables;
 
-    public static GqlVariables of(@NotNull GqlVariable @NotNull ... variables) {
+    public static GqlVariables of(@NotNull GqlVariable... variables) {
         return new GqlVariables().add(variables);
     }
 
-    public GqlVariables add(@NotNull GqlVariable @NotNull ... variables) {
+    public GqlVariables add(@NotNull GqlVariable... variables) {
         this.variables = Optional.ofNullable(this.variables).orElseGet(ArrayList::new);
         this.variables.addAll(Arrays.stream(variables)
                 .filter(Objects::nonNull)
