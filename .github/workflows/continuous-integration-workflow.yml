@@ -1,9 +1,8 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+
 env:
   COMMIT_OWNER: ${{ github.event.pusher.name }}
   COMMIT_SHA: ${{ github.sha }}
