@@ -7,11 +7,18 @@ repositories {
     mavenCentral()
     jcenter()
     maven { url 'https://maven.aliyun.com/repository/public' }
+    dependencies {
+        compile("org.ajoberstar.grgit:grgit-core:${grgitVersion}")
+    }
 }
 
+
 group 'com.qwlabs'
-version '0.1'
-ext.rversion='0.1'
+version '0.2'
+
+apply from: "gradle/check.gradle"
+apply from: "gradle/publication.gradle"
+apply from: "gradle/reversion.gradle"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -27,8 +34,7 @@ compileTestJava {
     options.encoding = 'UTF-8'
 }
 
-apply from: "gradle/check.gradle"
-apply from: "gradle/publication.gradle"
+
 
 dependencies {
     implementation("javax.validation:validation-api:${validationApiVersion}")

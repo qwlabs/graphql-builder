@@ -28,7 +28,7 @@ implementation 'com.qwlabs:graphql-builder:0.1'
 
 # Usage
 
-#### query
+## query
 
 ```java
 Gql gql=Gql.query("contents")
@@ -91,7 +91,7 @@ query {
 
 ```
 
-#### mutation
+## mutation
 
 
 ```java
