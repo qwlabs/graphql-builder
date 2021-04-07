@@ -6,7 +6,7 @@ on:
 env:
   COMMIT_OWNER: ${{ github.event.pusher.name }}
   COMMIT_SHA: ${{ github.sha }}
-
+  PIPELINE_ID: ${{ github.run_id }}
 
 jobs:
   build_jdk_11:
@@ -74,6 +74,7 @@ jobs:
           java-version: '11'
       - name: Deploy artifacts
         run: |
+          export PIPELINE_ID=${}
           export VERSION_HEADER=$'Version: GnuPG v2\n\n'
           export ORG_GRADLE_PROJECT_signingKey=${GPG_PRIVATE_KEY#"$VERSION_HEADER"}
           export ORG_GRADLE_PROJECT_signingPassword="$GPG_PASSPHRASE"
