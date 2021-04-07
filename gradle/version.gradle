@@ -3,8 +3,7 @@ def loadVersion() {
     if (!file.exists()) {
         return '0.0.999'
     }
-    def pipelineId = System.getenv('PIPELINE_ID')
-    return file.text + '.' + (pipelineId ? pipelineId : '0')
+    return file.text
 }
 
 version = loadVersion()

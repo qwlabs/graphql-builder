@@ -15,7 +15,7 @@ GraphQL query builder for Java
 <dependency>
     <groupId>com.qwlabs</groupId>
     <artifactId>graphql-builder</artifactId>
-    <version>0.2.*</version>
+    <version>0.2.15</version>
     <type>pom</type>
 </dependency>
 ```
@@ -23,7 +23,7 @@ GraphQL query builder for Java
 ## Gradle
 
 ```gradle
-implementation 'com.qwlabs:graphql-builder:0.2.*'
+implementation 'com.qwlabs:graphql-builder:0.2.15'
 ```
 
 # Usage
