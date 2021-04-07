@@ -4,13 +4,10 @@ import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
 
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.StringJoiner;
 
 public final class Gql {
     private static final Map<Integer, String> PRETTIFY_LEVEL_CACHE = Maps.newConcurrentMap();
@@ -23,7 +20,7 @@ public final class Gql {
     private final String operation;
     private final String name;
 
-    private List<GqlVariable> variables;
+    private GqlVariables variables;
     private GqlFields fields;
 
     private Gql(@NotNull String operation, @NotNull String name) {
@@ -51,7 +48,7 @@ public final class Gql {
     }
 
     public Gql variables(@NotNull GqlVariable... variables) {
-        this.variables = Optional.ofNullable(this.variables).orElseGet(ArrayList::new);
+        this.variables = Optional.ofNullable(this.variables).orElseGet(GqlVariables::root);
         Arrays.stream(variables)
                 .filter(Objects::nonNull)
                 .forEach(this.variables::add);
@@ -93,13 +90,7 @@ public final class Gql {
 
     private String buildVariables(String variablePrefix, String variableSuffix) {
         return Optional.ofNullable(variables)
-                .map(vs -> {
-                    StringJoiner joiner = new StringJoiner(",", "(", ")");
-                    vs.stream()
-                            .filter(Objects::nonNull)
-                            .forEach(v -> joiner.add(v.build()));
-                    return joiner.toString();
-                })
+                .map(GqlVariables::build)
                 .map(vs -> GqlVariable.replacePlaceholder(vs, variablePrefix, variableSuffix))
                 .orElse("");
     }

@@ -4,6 +4,9 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+    plugins {
+        id 'org.ajoberstar.grgit' version "${grgitPluginVersion}"
+    }
 }
 
 rootProject.name = 'graphql-builder'

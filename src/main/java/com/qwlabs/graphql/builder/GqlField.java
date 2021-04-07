@@ -20,7 +20,7 @@ public final class GqlField {
     }
 
     public GqlField variables(@NotNull GqlVariable... variables) {
-        this.variables = Optional.ofNullable(this.variables).orElseGet(GqlVariables::new);
+        this.variables = Optional.ofNullable(this.variables).orElseGet(GqlVariables::of);
         this.variables.add(variables);
         return this;
     }

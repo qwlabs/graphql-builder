@@ -13,6 +13,9 @@ import java.util.stream.Collectors;
 public final class GqlFields {
     private List<GqlField> fields;
 
+    protected GqlFields() {
+    }
+
     public static GqlFields of(@NotNull GqlField... fields) {
         return new GqlFields().add(fields);
     }

@@ -13,11 +13,6 @@ public class GqlTest {
                 .fields(GqlField.of("nodes").fields("id", "content", "createdAt"),
                         GqlField.of("totalCount"),
                         GqlField.of("pageInfo").fields("limit", "offset"));
-//        System.out.println(gql.buildSegment());
-//        System.out.println(gql.buildPrettifySegment());
-//        System.out.println(gql.build());
-//        System.out.println(gql.buildPrettify());
-
         assertThat(gql.buildSegment(), is("query {contents{nodes{id content createdAt} totalCount pageInfo{limit offset}}}"));
         assertThat(gql.buildPrettifySegment(), is("query {\n\tcontents {\n\t\tnodes {\n\t\t\tid\n\t\t\tcontent\n\t\t\tcreatedAt\n\t\t}\n\t\ttotalCount\n\t\tpageInfo {\n\t\t\tlimit\n\t\t\toffset\n\t\t}\n\t}\n}"));
         assertThat(gql.build(), is("{\"query\":\"query {contents{nodes{id content createdAt} totalCount pageInfo{limit offset}}}\", \"variables\": null}"));
@@ -31,14 +26,9 @@ public class GqlTest {
                         GqlVariable.of("content", "111")
                 )))
                 .fields(GqlFields.of("id", "content", "createdAt"));
-        System.out.println(gql.buildSegment());
-        System.out.println(gql.buildPrettifySegment());
-        System.out.println(gql.build());
-        System.out.println(gql.buildPrettify());
-
-//        assertThat(gql.buildSegment(), is("mutation {createContents(input:{content:\"111\"}){id content createdAt}}"));
-//        assertThat(gql.buildPrettifySegment(), is("mutation {\n\tcreateContents(input:{content:\"111\"}) {\n\t\tid\n\t\tcontent\n\t\tcreatedAt\n\t}\n}"));
-//        assertThat(gql.build(), is("{\"query\":\"mutation {createContents(input:{content:\\\"111\\\"}){id content createdAt}}\", \"variables\": null}"));
-//        assertThat(gql.buildPrettify(), is("{\n \"query\":\"mutation {\n\tcreateContents(input:{content:\\\"111\\\"}) {\n\t\tid\n\t\tcontent\n\t\tcreatedAt\n\t}\n}\",\n \"variables\": null\n}"));
+        assertThat(gql.buildSegment(), is("mutation {createContents(input:{content:\"111\"}){id content createdAt}}"));
+        assertThat(gql.buildPrettifySegment(), is("mutation {\n\tcreateContents(input:{content:\"111\"}) {\n\t\tid\n\t\tcontent\n\t\tcreatedAt\n\t}\n}"));
+        assertThat(gql.build(), is("{\"query\":\"mutation {createContents(input:{content:\\\"111\\\"}){id content createdAt}}\", \"variables\": null}"));
+        assertThat(gql.buildPrettify(), is("{\n \"query\":\"mutation {\n\tcreateContents(input:{content:\\\"111\\\"}) {\n\t\tid\n\t\tcontent\n\t\tcreatedAt\n\t}\n}\",\n \"variables\": null\n}"));
     }
 }

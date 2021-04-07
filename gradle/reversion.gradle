@@ -1,9 +1,6 @@
+apply plugin: 'org.ajoberstar.grgit'
+
 def loadReVersion() {
-    File file = new File("${project.buildDir}/.git")
-    if (!file.exists()) {
-        return ''
-    }
-    def grgit  = Grgit.open()
-    return  grgit.head().getAbbreviatedId()
+    return grgit.head().getAbbreviatedId()
 }
 ext.reversion = loadReVersion()
