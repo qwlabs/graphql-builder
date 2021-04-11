@@ -10,10 +10,10 @@ repositories {
     maven { url 'https://maven.aliyun.com/repository/public' }
 }
 
-apply from: "gradle/check.gradle"
-apply from: "gradle/publication.gradle"
 apply from: "gradle/version.gradle"
 apply from: "gradle/reversion.gradle"
+apply from: "gradle/check.gradle"
+apply from: "gradle/publication.gradle"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
